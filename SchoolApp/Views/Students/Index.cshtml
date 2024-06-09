@@ -1,0 +1,55 @@
+﻿@using SchoolApp.Data
+@model List<Student>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+<form method="get">
+
+    <input name="keyword" value="@ViewBag.KeyWord" />
+
+    <button type="submit">Submit</button>
+</form>
+
+
+@if(TempData.ContainsKey("Error"))
+{
+
+  
+    <div class=" alert alert-danger">@TempData["Error"]</div>
+}
+
+<table class="table table-bordered table-hover">
+    <thead>
+     <tr>
+         <th>ID</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th></th>
+
+     </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td> @student.StudentId</td>
+             <td> @student.FirstName </td>
+            <td>@student.LastName</td>
+            <td>
+
+                <a asp-action="Details" asp-route-id="@student.StudentId">Details</a>
+
+            </td>
+        </tr>
+
+        }
+
+    </tbody>
+   
+</table>
+
