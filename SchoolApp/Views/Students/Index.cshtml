@@ -22,6 +22,8 @@
     <div class=" alert alert-danger">@TempData["Error"]</div>
 }
 
+<a asp-action="Create">Create new student</a>
+
 <table class="table table-bordered table-hover">
     <thead>
      <tr>
@@ -42,7 +44,13 @@
             <td>@student.LastName</td>
             <td>
 
-                <a asp-action="Details" asp-route-id="@student.StudentId">Details</a>
+                <a asp-action="Details" asp-route-id="@student.StudentId">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@student.StudentId">Edit</a> |
+
+                    <form asp-action="Delete">
+                        <input type="hidden" value="@student.StudentId" name="id" />
+                        <button onclick="return confirm('Are you sure!')" class="btn btn-link" type="submit">Delete</button>
+                    </form>
 
             </td>
         </tr>

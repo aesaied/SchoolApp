@@ -22,6 +22,10 @@ namespace SchoolApp.Data
         {
             base.OnModelCreating(modelBuilder);
 
+
+            modelBuilder.Entity<Course>().HasMany(c=>c.Enrollments).WithOne(s=> s.Course).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Student>().HasMany(c => c.Enrollments).WithOne(s => s.Student).OnDelete(DeleteBehavior.NoAction);
+
             modelBuilder.Entity<Course>().HasData(
                 new Course() { CourseId=1, Title="C++", Credits=3 },
                 new Course() { CourseId = 2, Title = "C++ Lab", Credits = 1 },
