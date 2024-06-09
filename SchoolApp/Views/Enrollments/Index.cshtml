@@ -5,3 +5,33 @@
 
 <h1>Index</h1>
 
+
+<select id="cmbStudent" asp-items="ViewBag.Students">
+    <option value="">--Select--</option>
+
+</select>
+
+<div id="dvDetails"></div>
+
+
+@section Scripts{
+
+    <script>
+
+        // on ready  
+        $(function () {
+
+            $('#cmbStudent').change(function () {
+            
+               var  studentId= $(this).val();
+
+
+                $('#dvDetails').load('/Enrollments/StudentEnrollmentDetails/' + studentId);
+            
+            });
+        
+        });
+
+    </script>
+}
+

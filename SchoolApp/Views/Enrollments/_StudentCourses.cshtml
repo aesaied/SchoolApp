@@ -1,0 +1,26 @@
+﻿@model List<StudentCoursesModel>
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+            <th>Course</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.EnrollmentId</td>
+                <td>@item.CourseTitle</td>
+
+            </tr>
+        }
+
+        </tbody>
+    </table>

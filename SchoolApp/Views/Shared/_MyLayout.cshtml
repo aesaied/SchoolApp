@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<div>Data from  MLayout</div>
+@RenderBody()
+
+@* <div> for test</div>
+@RenderBody() *@
+
+
+
+@section Scripts{
+    
+    @await RenderSectionAsync("Scripts", required:false)
+}
