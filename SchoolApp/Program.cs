@@ -18,6 +18,13 @@ namespace SchoolApp
                 options.UseSqlServer(connStr);
             });
 
+            builder.Services.AddIdentity<AppUser, AppRole>(options =>
+            {
+                options.Lockout.MaxFailedAccessAttempts = 10;
+              options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(2);
+              
+            }).AddEntityFrameworkStores<SchoolContext>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

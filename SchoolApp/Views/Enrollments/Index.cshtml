@@ -14,6 +14,14 @@
 <div id="dvDetails"></div>
 
 
+<select id="cmbCourses" asp-items="ViewBag.Courses">
+    <option value="">--Select--</option>
+
+</select>
+
+<div id="dvDetails2"></div>
+
+
 @section Scripts{
 
     <script>
@@ -28,6 +36,15 @@
 
                 $('#dvDetails').load('/Enrollments/StudentEnrollmentDetails/' + studentId);
             
+            });
+
+            $('#cmbCourses').change(function () {
+
+                var courseId = $(this).val();
+
+
+                $('#dvDetails2').load('/Enrollments/CourseEnrollmentDetails/' + courseId);
+
             });
         
         });
